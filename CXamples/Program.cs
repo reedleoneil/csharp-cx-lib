@@ -11,7 +11,9 @@ namespace CXamples
     {
         static void Main(string[] args)
         {
-            CX cx = new CX();
+            CX cx = new CX(CX.Production);
+            cx.GetProducts();
+            Console.ReadLine();
         }
     }
 }

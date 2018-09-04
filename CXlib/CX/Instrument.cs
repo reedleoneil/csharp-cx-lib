@@ -17,11 +17,11 @@ namespace CXlib
         public string InstrumentType { get; }
         public Instrument(int instrument_id, string symbol, int product_1, string product_1_symbol, int product_2, string product_2_symbol, string instrument_type)
         {
-            this.InstrumentId = instrument_id;
-            this.Symbol = symbol;
-            this.Product1 = product_1;
-            this.Product1Symbol = product_1_symbol;
-            this.Product2 = product_2;
+            InstrumentId = instrument_id;
+            Symbol = symbol;
+            Product1 = product_1;
+            Product1Symbol = product_1_symbol;
+            Product2 = product_2;
             this.Product2Symbol = product_2_symbol;
             this.InstrumentType = instrument_type;
         }

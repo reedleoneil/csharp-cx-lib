@@ -14,10 +14,10 @@ namespace CXlib
         public string Payload { get; }
         public Frame(int m, int i, string n, string o)
         {
-            this.MessageType = m;
-            this.SequenceNumber = i;
-            this.FunctionName = n;
-            this.Payload = o;
+            MessageType = m;
+            SequenceNumber = i;
+            FunctionName = n;
+            Payload = o;
         }
     }
 }

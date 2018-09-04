@@ -15,11 +15,11 @@ namespace CXlib
         public int DeciamPlaces { get; }
         public Product(int product_id, string symbol, string product_full_name, string product_type, int decimal_places)
         {
-            this.ProductId = product_id;
-            this.Symbol = symbol;
-            this.ProductFullName = product_full_name;
-            this.ProductType = product_type;
-            this.DeciamPlaces = decimal_places;
+            ProductId = product_id;
+            Symbol = symbol;
+            ProductFullName = product_full_name;
+            ProductType = product_type;
+            DeciamPlaces = decimal_places;
         }
     }
 }
