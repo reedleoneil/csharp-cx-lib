@@ -49,6 +49,7 @@
     <Compile Include="CX.cs" />
     <Compile Include="CX\Frame.cs" />
     <Compile Include="CX\Instrument.cs" />
+    <Compile Include="CX\MessageType.cs" />
     <Compile Include="CX\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
