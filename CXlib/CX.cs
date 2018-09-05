@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,7 +34,10 @@ namespace CXlib
                 IsConnected = true;
             };
             ws.OnMessage += (sender, e) =>
+            {
                 Console.WriteLine($"Websocket Message {e.Data}");
+                Frame frame = Frame.Deserialize(e.Data);
+            };
             ws.OnClose += (sender, e) =>
             {
                 Console.WriteLine($"Websocket Close: {e.Code} {e.Reason}");
@@ -51,7 +55,8 @@ namespace CXlib
 
         public void GetProducts()
         {
-            ws.Send("{\"m\":0,\"i\":0,\"n\":\"GetProducts\",\"o\":\"{\\\"OMSId\\\": 1}\"}");
+            Frame frame = new Frame { MessageType = MessageType.Request, SequenceNumber = 0, FunctionName = "GetProducts", Payload = new { OMSId = 1 } };
+            ws.Send(Frame.Serialize(frame));
         }
 
         public void GetInstruments()
