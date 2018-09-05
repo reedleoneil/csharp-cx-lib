@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,16 +9,23 @@ namespace CXlib
 {
     class Frame
     {
-        public int MessageType { get; }
-        public int SequenceNumber { get; }
-        public string FunctionName { get; }
-        public string Payload { get; }
-        public Frame(int m, int i, string n, string o)
+        [JsonProperty("m")]
+        public int MessageType { get; set; }
+        [JsonProperty("i")]
+        public int SequenceNumber { get; set; }
+        [JsonProperty("n")]
+        public string FunctionName { get; set; }
+        [JsonProperty("o")]
+        public object Payload { get; set; }
+        public static string Serialize(Frame frame)
         {
-            MessageType = m;
-            SequenceNumber = i;
-            FunctionName = n;
-            Payload = o;
+            return JsonConvert.SerializeObject(new { m = frame.MessageType, i = frame.SequenceNumber, n = frame.FunctionName, o = JsonConvert.SerializeObject(frame.Payload) }); 
+        }
+        public static Frame Deserialize(string json)
+        {
+            Frame frame = JsonConvert.DeserializeObject<Frame>(json);
+            frame.Payload = JsonConvert.DeserializeObject<dynamic>(frame.Payload.ToString());
+            return frame;
         }
     }
 }
