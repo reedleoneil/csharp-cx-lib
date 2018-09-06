@@ -148,9 +148,124 @@ namespace CXlib
             ws.Send(Frame.Serialize(frame));
         }
 
-        public void GetOrderStatus()
+        public void CancelOrder(int accountId, int orderId, int sequenceNumber = 0)
         {
-            //ws.Send("{\"m\":0,\"i\":0,\"n\":\"GetOrderStatus\",\"o\":\"{\\\"OMSId\\\":1,\\\"AccountId\\\":4,\\\"OrderId\\\":12}\"}");
+            Frame frame = new Frame
+            {
+                MessageType = MessageType.Request,
+                SequenceNumber = sequenceNumber,
+                FunctionName = "CancelOrder",
+                Payload = new { OMSId = 1, AccountId = accountId, OrderId = orderId }
+            };
+            ws.Send(Frame.Serialize(frame));
+        }
+
+        public void GetOrderStatus(int accountId, int orderId, int sequenceNumber = 0)
+        {
+            Frame frame = new Frame
+            {
+                MessageType = MessageType.Request,
+                SequenceNumber = sequenceNumber,
+                FunctionName = "GetOrderStatus",
+                Payload = new { OMSId = 1, AccountId = accountId, OrderId = orderId }
+            };
+            ws.Send(Frame.Serialize(frame));
+        }
+
+        public void GetOrderFee(int accountId, int instrumentId, int productId, decimal amount, string orderType, string makerTaker, int sequenceNumber = 0)
+        {
+            Frame frame = new Frame
+            {
+                MessageType = MessageType.Request,
+                SequenceNumber = sequenceNumber,
+                FunctionName = "GetOrderFee",
+                Payload = new { OMSId = 1, AccountId = accountId, InstrumentId = instrumentId, ProductId = productId, Amount = amount, OrderType = orderType, MakerTaker = makerTaker }
+            };
+            ws.Send(Frame.Serialize(frame));
+        }
+
+        public void GetOrderHistory(int accountId, int sequenceNumber = 0)
+        {
+            Frame frame = new Frame
+            {
+                MessageType = MessageType.Request,
+                SequenceNumber = sequenceNumber,
+                FunctionName = "GetOrderHistory",
+                Payload = new { OMSId = 1, AccountId = accountId }
+            };
+            ws.Send(Frame.Serialize(frame));
+        }
+
+        public void GetOpenOrders(int accountId, int sequenceNumber = 0)
+        {
+            Frame frame = new Frame
+            {
+                MessageType = MessageType.Request,
+                SequenceNumber = sequenceNumber,
+                FunctionName = "GetOpenOrders",
+                Payload = new { OMSId = 1, AccountId = accountId }
+            };
+            ws.Send(Frame.Serialize(frame));
+        }
+
+        public void CreateWithdrawTicket(int productId, int accountId, decimal amount, int sequenceNumber = 0)
+        {
+            Frame frame = new Frame
+            {
+                MessageType = MessageType.Request,
+                SequenceNumber = sequenceNumber,
+                FunctionName = "CreateWithdrawTicket",
+                Payload = new { OMSId = 1, ProductId = productId, AccountId = accountId, Amount = amount }
+            };
+            ws.Send(Frame.Serialize(frame));
+        }
+
+        public void SubscribeLevel1(int instrumentId, int sequenceNumber = 0)
+        {
+            Frame frame = new Frame
+            {
+                MessageType = MessageType.Request,
+                SequenceNumber = sequenceNumber,
+                FunctionName = "SubscribeLevel1",
+                Payload = new { OMSId = 1, InstrumentId = instrumentId }
+            };
+            ws.Send(Frame.Serialize(frame));
+        }
+
+        public void UnsubscribeLevel1(int instrumentId, int sequenceNumber = 0)
+        {
+            Frame frame = new Frame
+            {
+                MessageType = MessageType.Request,
+                SequenceNumber = sequenceNumber,
+                FunctionName = "UnsubscribeLevel1",
+                Payload = new { OMSId = 1, InstrumentId = instrumentId }
+            };
+            ws.Send(Frame.Serialize(frame));
+        }
+
+        public void SubscribeLevel2(int instrumentId, int depth, int sequenceNumber = 0)
+        {
+            Frame frame = new Frame
+            {
+                MessageType = MessageType.Request,
+                SequenceNumber = sequenceNumber,
+                FunctionName = "SubscribeLevel2",
+                Payload = new { OMSId = 1, InstrumentId = instrumentId, Depth = depth }
+            };
+            ws.Send(Frame.Serialize(frame));
+        }
+
+        public void UnsubscribeLevel2(int instrumentId, int sequenceNumber = 0)
+        {
+            Frame frame = new Frame
+            {
+                MessageType = MessageType.Request,
+                SequenceNumber = sequenceNumber,
+                FunctionName = "UnsubscribeLevel2",
+                Payload = new { OMSId = 1, InstrumentId = instrumentId }
+            };
+            ws.Send(Frame.Serialize(frame));
         }
     }
 }
