@@ -12,6 +12,11 @@ namespace CXamples
         static void Main(string[] args)
         {
             CX cx = new CX(CX.Production);
+            cx.OnGetProducts += (sender, e) => {
+                Console.WriteLine(e.SequenceNumber);
+                foreach (Product product in e.Products)
+                    Console.WriteLine(product.ProductFullName);
+            };
             while (true)
             {
 

@@ -14,8 +14,8 @@ namespace CXlib
         public static string Staging { get => "wss://api-cx.staging.coins.technology/ws-api/"; }
         public bool IsConnected { get; private set; }
         public bool IsAuthenticated { get; private set; }
-
-        public event EventHandler OnGetProducts;
+        
+        public event EventHandler<GetProductsEventArgs> OnGetProducts;
         public event EventHandler OnGetInstruments;
         
         private WebSocket ws;
@@ -37,6 +37,11 @@ namespace CXlib
             {
                 Console.WriteLine($"Websocket Message {e.Data}");
                 Frame frame = Frame.Deserialize(e.Data);
+                if (frame.MessageType == MessageType.Reply && frame.FunctionName == "GetProducts")
+                {
+                    Product[] products = ((Newtonsoft.Json.Linq.JArray)frame.Payload).ToObject<Product[]>();
+                    OnGetProducts(this, new GetProductsEventArgs { SequenceNumber = frame.SequenceNumber, Products = products });
+                }
             };
             ws.OnClose += (sender, e) =>
             {
