@@ -53,7 +53,7 @@ namespace CXlib
             ws.Connect();
         }
 
-        public void GetProducts(int sequenceNumber)
+        public void GetProducts(int sequenceNumber = 0)
         {
             Frame frame = new Frame {
                 MessageType = MessageType.Request,
@@ -64,7 +64,7 @@ namespace CXlib
             ws.Send(Frame.Serialize(frame));
         }
 
-        public void GetInstruments(int sequenceNumber)
+        public void GetInstruments(int sequenceNumber = 0)
         {
             Frame frame = new Frame
             {
@@ -76,34 +76,76 @@ namespace CXlib
             ws.Send(Frame.Serialize(frame));
         }
 
-        public void WebAuthenticateUser(string username, string password)
+        public void WebAuthenticateUser(string username, string password, int sequenceNumber = 0)
         {
-            ws.Send("{\"m\":0,\"i\":0,\"n\":\"WebAuthenticateUser\",\"o\":\"{\\\"UserName\\\":\\\"User1\\\",\\\"Password\\\":\\\"Password\\\"}\"}");
+            Frame frame = new Frame
+            {
+                MessageType = MessageType.Request,
+                SequenceNumber = sequenceNumber,
+                FunctionName = "WebAuthenticateUser",
+                Payload = new { UserName = username, Password = password }
+            };
+            ws.Send(Frame.Serialize(frame));
         }
 
-        public void GetUserAccounts()
+        public void GetUserAccounts(int sequenceNumber = 0)
         {
-            ws.Send("{\"m\":0,\"i\":0,\"n\":\"GetUserAccounts\",\"o\":\"\"}");
+            Frame frame = new Frame
+            {
+                MessageType = MessageType.Request,
+                SequenceNumber = sequenceNumber,
+                FunctionName = "GetUserAccounts",
+                Payload = new { }
+            };
+            ws.Send(Frame.Serialize(frame));
         }
 
-        public void GetAccountTransactions(int accountId, int depth)
+        public void GetAccountTransactions(int accountId, int depth, int sequenceNumber = 0)
         {
-            ws.Send("{\"m\":0,\"i\":0,\"n\":\"GetAccountTransactions\",\"o\":\"{\\\"OMSId\\\":1,\\\"AccountId\\\": 1,\\\"Depth\\\": 200}\"}");
+            Frame frame = new Frame
+            {
+                MessageType = MessageType.Request,
+                SequenceNumber = sequenceNumber,
+                FunctionName = "GetAccountTransactions",
+                Payload = new { OMSId = 1, AccountId = accountId, Depth = depth }
+            };
+            ws.Send(Frame.Serialize(frame));
         }
 
-        public void GetAccountPositions(int accountId)
+        public void GetAccountPositions(int accountId, int sequenceNumber = 0)
         {
-            ws.Send("{\"m\":0,\"i\":0,\"n\":\"GetAccountPositions\",\"o\":\"{\\\"OMSId\\\":1,\\\"AccountId\\\":4}\"}");
+            Frame frame = new Frame
+            {
+                MessageType = MessageType.Request,
+                SequenceNumber = sequenceNumber,
+                FunctionName = "GetAccountPositions",
+                Payload = new { OMSId = 1, AccountId = accountId }
+            };
+            ws.Send(Frame.Serialize(frame));
         }
 
-        public void GetAccountTrades(int accountId, int count, int startIndex)
+        public void GetAccountTrades(int accountId, int count, int startIndex, int sequenceNumber = 0)
         {
-            ws.Send("{\"m\":0,\"i\":0,\"n\":\"GetAccountTrades\",\"o\":\"{\\\"OMSId\\\":1,\\\"AccountId\\\":4,\\\"Count\\\":50,\\\"StartIndex\\\":0}\"}");
+            Frame frame = new Frame
+            {
+                MessageType = MessageType.Request,
+                SequenceNumber = sequenceNumber,
+                FunctionName = "GetAccountTrades",
+                Payload = new { OMSId = 1, AccountId = accountId, Count = count, StartIndex= startIndex }
+            };
+            ws.Send(Frame.Serialize(frame));
         }
 
-        public void SendOrder(int accountId, int clientOrderId, decimal quantity, decimal displayQuantity, bool useDisplayQuantity, decimal limitPrice, int orderIdOCO, int orderType, int pegPriceType, int instrumentId, decimal TrailingAmount, decimal limitOffset, bool side, decimal stopPrice, int timeInForce)
+        public void SendOrder(int accountId, int clientOrderId, decimal quantity, decimal displayQuantity, bool useDisplayQuantity, decimal limitPrice, int orderIdOCO, int orderType, int pegPriceType, int instrumentId, decimal TrailingAmount, decimal limitOffset, bool side, decimal stopPrice, int timeInForce, int sequenceNumber = 0)
         {
-            ws.Send("{\"m\":0,\"i\":0,\"n\":\"SendOrder\",\"o\":\"{\\\"OMSId\\\": 1,\\\"AccountId\\\": 4,\\\"ClientOrderId\\\": 99,\\\"Quantity\\\": 1,\\\"DisplayQuantity\\\": 0,\\\"UseDisplayQuantity\\\": true,\\\"LimitPrice\\\": 95,\\\"OrderIdOCO\\\": 0,\\\"OrderType\\\": 2,\\\"PegPriceType\\\": 1,\\\"InstrumentId\\\": 1,\\\"TrailingAmount\\\": 1.0,\\\"LimitOffset\\\": 2.0,\\\"Side\\\": 0,\\\"StopPrice\\\": 96,\\\"TimeInForce\\\": 1}\"}");
+            Frame frame = new Frame
+            {
+                MessageType = MessageType.Request,
+                SequenceNumber = sequenceNumber,
+                FunctionName = "SendOrder",
+                Payload = new { OMSId = 1, AccountId = accountId, ClientOrderId = clientOrderId, Quantity = quantity, DisplayQuantity = displayQuantity, UseDisplayQuantity = useDisplayQuantity, LimitPrice = limitPrice, OrderIdOCO = orderIdOCO, OrderType = orderType, PegPriceType = pegPriceType, InstrumentId = instrumentId, LimitOffset = limitOffset, Side = side, StopPrice = stopPrice, TimeInForce = timeInForce }
+            };
+            ws.Send(Frame.Serialize(frame));
         }
 
         public void GetOrderStatus()
