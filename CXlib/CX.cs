@@ -267,5 +267,29 @@ namespace CXlib
             };
             ws.Send(Frame.Serialize(frame));
         }
+
+        public void SubscribeTrades(int instrumentId, int includeLastCount, int sequenceNumber = 0)
+        {
+            Frame frame = new Frame
+            {
+                MessageType = MessageType.Request,
+                SequenceNumber = sequenceNumber,
+                FunctionName = "SubscribeTrades",
+                Payload = new { OMSId = 1, InstrumentId = instrumentId, IncludeLastCount = includeLastCount }
+            };
+            ws.Send(Frame.Serialize(frame));
+        }
+
+        public void UnsubscribeTrades(int instrumentId, int sequenceNumber = 0)
+        {
+            Frame frame = new Frame
+            {
+                MessageType = MessageType.Request,
+                SequenceNumber = sequenceNumber,
+                FunctionName = "UnsubscribeTrades",
+                Payload = new { OMSId = 1, InstrumentId = instrumentId }
+            };
+            ws.Send(Frame.Serialize(frame));
+        }
     }
 }
