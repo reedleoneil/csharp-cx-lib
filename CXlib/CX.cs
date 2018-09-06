@@ -53,15 +53,27 @@ namespace CXlib
             ws.Connect();
         }
 
-        public void GetProducts()
+        public void GetProducts(int sequenceNumber)
         {
-            Frame frame = new Frame { MessageType = MessageType.Request, SequenceNumber = 0, FunctionName = "GetProducts", Payload = new { OMSId = 1 } };
+            Frame frame = new Frame {
+                MessageType = MessageType.Request,
+                SequenceNumber = sequenceNumber,
+                FunctionName = "GetProducts",
+                Payload = new { OMSId = 1 }
+            };
             ws.Send(Frame.Serialize(frame));
         }
 
-        public void GetInstruments()
+        public void GetInstruments(int sequenceNumber)
         {
-            ws.Send("{\"m\":0,\"i\":0,\"n\":\"GetInstruments\",\"o\":\"{\\\"OMSId\\\": 1}\"}");
+            Frame frame = new Frame
+            {
+                MessageType = MessageType.Request,
+                SequenceNumber = sequenceNumber,
+                FunctionName = "GetInstruments",
+                Payload = new { OMSId = 1 }
+            };
+            ws.Send(Frame.Serialize(frame));
         }
 
         public void WebAuthenticateUser(string username, string password)
