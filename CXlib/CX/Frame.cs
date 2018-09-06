@@ -17,6 +17,7 @@ namespace CXlib
         public string FunctionName { get; set; }
         [JsonProperty("o")]
         public object Payload { get; set; }
+
         public static string Serialize(Frame frame)
         {
             return JsonConvert.SerializeObject(new { m = frame.MessageType, i = frame.SequenceNumber, n = frame.FunctionName, o = JsonConvert.SerializeObject(frame.Payload) }); 
@@ -24,7 +25,14 @@ namespace CXlib
         public static Frame Deserialize(string json)
         {
             Frame frame = JsonConvert.DeserializeObject<Frame>(json);
-            frame.Payload = JsonConvert.DeserializeObject<dynamic>(frame.Payload.ToString());
+            try
+            {
+                frame.Payload = JsonConvert.DeserializeObject<dynamic>(frame.Payload.ToString());
+            }
+            catch (JsonReaderException ex)
+            {
+
+            }
             return frame;
         }
     }
