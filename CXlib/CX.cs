@@ -322,5 +322,18 @@ namespace CXlib
             };
             ws.Send(Frame.Serialize(frame));
         }
+
+        public void SubscribeAccountEvents(int accountId, int sequenceNumber = 0)
+        {
+            Frame frame = new Frame
+            {
+                MessageType = MessageType.Request,
+                SequenceNumber = sequenceNumber,
+                //FunctionName = "SubscribeAccountEvents",
+                FunctionName = "SubscribeAccountEvents",
+                Payload = new { OMSId = 1, AccountId = accountId }
+            };
+            ws.Send(Frame.Serialize(frame));
+        }
     }
 }
