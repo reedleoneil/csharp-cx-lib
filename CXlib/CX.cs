@@ -16,7 +16,7 @@ namespace CXlib
         public bool IsAuthenticated { get; private set; }
         
         public event EventHandler<GetProductsEventArgs> OnGetProducts;
-        public event EventHandler OnGetInstruments;
+        public event EventHandler<GetInstrumentsEventArgs> OnGetInstruments;
         
         private WebSocket ws;
 
@@ -37,10 +37,25 @@ namespace CXlib
             {
                 Console.WriteLine($"Websocket Message {e.Data}");
                 Frame frame = Frame.Deserialize(e.Data);
-                if (frame.MessageType == MessageType.Reply && frame.FunctionName == "GetProducts")
+                switch (frame.MessageType)
                 {
-                    Product[] products = ((Newtonsoft.Json.Linq.JArray)frame.Payload).ToObject<Product[]>();
-                    OnGetProducts(this, new GetProductsEventArgs { SequenceNumber = frame.SequenceNumber, Products = products });
+                    case MessageType.Reply:
+                        switch (frame.FunctionName)
+                        {
+                            case "GetProducts":
+                                Product[] products = ((Newtonsoft.Json.Linq.JArray)frame.Payload).ToObject<Product[]>();
+                                OnGetProducts(this, new GetProductsEventArgs { SequenceNumber = frame.SequenceNumber, Products = products });
+                                break;
+                            case "GetInstruments":
+                                Instrument[] instruments = ((Newtonsoft.Json.Linq.JArray)frame.Payload).ToObject<Instrument[]>();
+                                OnGetInstruments(this, new GetInstrumentsEventArgs { SequenceNumber = frame.SequenceNumber, Instruments = instruments });
+                                break;
+                        }
+                        break;
+                    case MessageType.Event:
+                        break;
+                    case MessageType.Error:
+                        break;
                 }
             };
             ws.OnClose += (sender, e) =>
