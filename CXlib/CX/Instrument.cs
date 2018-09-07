@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,22 +9,19 @@ namespace CXlib
 {
     public class Instrument
     {
-        public int InstrumentId { get; }
-        public string Symbol { get; }
-        public int Product1 { get; }
-        public string Product1Symbol { get;  }
-        public int Product2 { get; }
-        public string Product2Symbol { get; }
-        public string InstrumentType { get; }
-        public Instrument(int instrument_id, string symbol, int product_1, string product_1_symbol, int product_2, string product_2_symbol, string instrument_type)
-        {
-            InstrumentId = instrument_id;
-            Symbol = symbol;
-            Product1 = product_1;
-            Product1Symbol = product_1_symbol;
-            Product2 = product_2;
-            this.Product2Symbol = product_2_symbol;
-            this.InstrumentType = instrument_type;
-        }
+        [JsonProperty("InstrumentId")]
+        public int InstrumentId { get; private set; }
+        [JsonProperty("Symbol")]
+        public string Symbol { get; private set; }
+        [JsonProperty("Product1")]
+        public int Product1 { get; private set; }
+        [JsonProperty("Product1Symbol")]
+        public string Product1Symbol { get; private set; }
+        [JsonProperty("Product2")]
+        public int Product2 { get; private set; }
+        [JsonProperty("Product2Symbol")]
+        public string Product2Symbol { get; private set; }
+        [JsonProperty("InstrumentType")]
+        public string InstrumentType { get; private set; }
     }
 }
