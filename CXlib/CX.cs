@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace CXlib
         
         public event EventHandler<GetProductsEventArgs> OnGetProducts;
         public event EventHandler<GetInstrumentsEventArgs> OnGetInstruments;
+        public event EventHandler<WebAuthenticateUserEventArgs> OnWebAuthenticateUser;
         
         private WebSocket ws;
 
@@ -43,12 +45,21 @@ namespace CXlib
                         switch (frame.FunctionName)
                         {
                             case "GetProducts":
-                                Product[] products = ((Newtonsoft.Json.Linq.JArray)frame.Payload).ToObject<Product[]>();
+                                Product[] products = ((JArray)frame.Payload).ToObject<Product[]>();
                                 OnGetProducts(this, new GetProductsEventArgs { SequenceNumber = frame.SequenceNumber, Products = products });
                                 break;
                             case "GetInstruments":
-                                Instrument[] instruments = ((Newtonsoft.Json.Linq.JArray)frame.Payload).ToObject<Instrument[]>();
+                                Instrument[] instruments = ((JArray)frame.Payload).ToObject<Instrument[]>();
                                 OnGetInstruments(this, new GetInstrumentsEventArgs { SequenceNumber = frame.SequenceNumber, Instruments = instruments });
+                                break;
+                            case "WebAuthenticateUser":
+                                JObject payload = JObject.FromObject(frame.Payload);
+                                bool authenticated = (bool)payload["Authenticated"];
+                                string sessionToken = (string)payload["SessionToken"];
+                                int? userId = (int?)payload["UserId"];
+                                string errorMessage = (string)payload["errormsg"];
+                                OnWebAuthenticateUser(this, new WebAuthenticateUserEventArgs { Authenticated = authenticated, SessionToken = sessionToken, UserId = userId, ErrorMessage = errorMessage });
+                                this.IsAuthenticated = authenticated;
                                 break;
                         }
                         break;
@@ -67,8 +78,8 @@ namespace CXlib
             ws.OnError += (sender, e) =>
             {
                 Console.WriteLine($"Websocket Error: {e.Exception} {e.Message}");
-                IsConnected = false;
-                ConnectToAPI(url);
+                //IsConnected = false;
+                //ConnectToAPI(url);
             };
             ws.Connect();
         }
