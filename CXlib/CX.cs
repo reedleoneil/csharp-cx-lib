@@ -19,7 +19,9 @@ namespace CXlib
         public event EventHandler<GetProductsEventArgs> OnGetProducts;
         public event EventHandler<GetInstrumentsEventArgs> OnGetInstruments;
         public event EventHandler<WebAuthenticateUserEventArgs> OnWebAuthenticateUser;
-        
+        public event EventHandler<GetUserAccountsEventArgs> OnGetUserAccounts;
+        public event EventHandler<GetAccountTransactionsEventArgs> OnGetAccountTransactions;
+
         private WebSocket ws;
 
         public CX(string url)
@@ -58,8 +60,16 @@ namespace CXlib
                                 string sessionToken = (string)payload["SessionToken"];
                                 int? userId = (int?)payload["UserId"];
                                 string errorMessage = (string)payload["errormsg"];
-                                OnWebAuthenticateUser(this, new WebAuthenticateUserEventArgs { Authenticated = authenticated, SessionToken = sessionToken, UserId = userId, ErrorMessage = errorMessage });
+                                OnWebAuthenticateUser(this, new WebAuthenticateUserEventArgs { SequenceNumber = frame.SequenceNumber, Authenticated = authenticated, SessionToken = sessionToken, UserId = userId, ErrorMessage = errorMessage });
                                 this.IsAuthenticated = authenticated;
+                                break;
+                            case "GetUserAccounts":
+                                int[] accountIds = ((JArray)frame.Payload).ToObject<int[]>();
+                                OnGetUserAccounts(this, new GetUserAccountsEventArgs { SequenceNumber = frame.SequenceNumber, AccountIds = accountIds });
+                                break;
+                            case "GetAccountTransactions":
+                                Transaction[] transactions = ((JArray)frame.Payload).ToObject<Transaction[]>();
+                                OnGetAccountTransactions(this, new GetAccountTransactionsEventArgs { SequenceNumber = frame.SequenceNumber, Transactions = transactions });
                                 break;
                         }
                         break;

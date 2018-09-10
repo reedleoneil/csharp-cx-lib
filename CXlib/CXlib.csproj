@@ -49,6 +49,9 @@
     <Compile Include="CX.cs" />
     <Compile Include="CX\Frame.cs" />
     <Compile Include="CX\GetInstrumentsEventArgs.cs" />
+    <Compile Include="CX\GetUserAccountsEventArgs.cs" />
+    <Compile Include="CX\Transaction.cs" />
+    <Compile Include="CX\GetAcountTransactionsEventArgs.cs" />
     <Compile Include="CX\WebAuthenticateUserEventArgs.cs" />
     <Compile Include="CX\GetProductsEventArgs.cs" />
     <Compile Include="CX\Instrument.cs" />

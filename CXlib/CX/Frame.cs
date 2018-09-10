@@ -10,13 +10,13 @@ namespace CXlib
     class Frame
     {
         [JsonProperty("m")]
-        public int MessageType { get; set; }
+        public int MessageType { get; internal set; }
         [JsonProperty("i")]
-        public int SequenceNumber { get; set; }
+        public int SequenceNumber { get; internal set; }
         [JsonProperty("n")]
-        public string FunctionName { get; set; }
+        public string FunctionName { get; internal set; }
         [JsonProperty("o")]
-        public object Payload { get; set; }
+        public object Payload { get; internal set; }
 
         public static string Serialize(Frame frame)
         {
