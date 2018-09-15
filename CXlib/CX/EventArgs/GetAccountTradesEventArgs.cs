@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CXlib
 {
-    public class GetAccountTransactionsEventArgs : EventArgs
+    public class GetAccountTradesEventArgs : EventArgs
     {
         public int SequenceNumber { get; internal set; }
-        public Transaction[] Transactions { get; internal set; }
+        public AccountTrade[] Trades { get; internal set; }
     }
 }

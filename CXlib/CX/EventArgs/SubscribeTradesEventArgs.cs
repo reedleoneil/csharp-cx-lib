@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CXlib
+{
+    public class SubscribeTradesEventArgs
+    {
+        public int SequenceNumber { get; internal set; }
+        public MarketTrade[] MarketTrades { get; internal set; }
+    }
+}
