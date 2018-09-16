@@ -36,7 +36,7 @@ namespace CXlib
         [JsonProperty("LimitOffset")]
         public decimal LimitOffset { get; set; }
         [JsonProperty("Side")]
-        public bool Side { get; set; }
+        public int Side { get; set; }
         [JsonProperty("StopPrice")]
         public decimal StopPrice { get; set; }
         [JsonProperty("TimeInForce")]
