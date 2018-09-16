@@ -9,6 +9,6 @@ namespace CXlib
     public class TradeDataUpdateEventArgs
     {
         public int SequenceNumber { get; internal set; }
-        public MarketTrade[] Trades { get; internal set; }
+        public MarketTrade[] MarketTrades { get; internal set; }
     }
 }
