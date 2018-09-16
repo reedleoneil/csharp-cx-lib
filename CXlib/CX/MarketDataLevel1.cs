@@ -39,10 +39,10 @@ namespace CXlib
         public decimal CurrentDayPxChange { get; internal set; }
         [JsonProperty("Rolling24HrVolume")]
         public decimal Rolling24HrVolume { get; internal set; }
-        [JsonProperty("Rolling24HrNumTrades")]
-        public int Rolling24HrNumTrades { get; internal set; }
-        [JsonProperty("Rolling24PxChange")]
-        public decimal Rolling24PxChange { get; internal set; }
+        [JsonProperty("Rolling24NumTrades")]
+        public int Rolling24NumTrades { get; internal set; }
+        [JsonProperty("Rolling24HrPxChange")]
+        public decimal Rolling24HrPxChange { get; internal set; }
         [JsonProperty("TimeStamp")]
         public long TimeStamp { get; internal set; }
     }
