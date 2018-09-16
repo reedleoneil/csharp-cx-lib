@@ -35,7 +35,11 @@ namespace CXlib
         public string RejectReason { get; internal set; }
         [JsonProperty("OrigOrderId")]
         public int OrigOrderId { get; internal set; }
-        [JsonProperty("RecieveTime")]
-        public long RecieveTime { get; internal set; }
+        [JsonProperty("ChangeReason")]
+        public string ChangeReason { get; internal set; }
+        [JsonProperty("OrigClOrdId")]
+        public int OrigClOrdId { get; internal set; }
+        [JsonProperty("ReceiveTime")]
+        public long ReceiveTime { get; internal set; }
     }
 }
