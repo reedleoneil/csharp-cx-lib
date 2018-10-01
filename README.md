@@ -122,15 +122,15 @@ namespace ConsoleApp1
 			//Subscribe to response
 			cx.OnGetProducts += (sender, e) => {
 				//Handle e.Products
-     foreach (Product product in e.Products)
-      Console.WriteLine(
-       $"{product.ProductId, -2} " +
-       $"{product.Symbol, -4} " +
-       $"{product.ProductFullName, -20} " +
-       $"{product.ProductType, -20} " +
-       $"{product.DecimalPlaces, -2}"
-      );
-     };
+			     	foreach (Product product in e.Products)
+			      		Console.WriteLine(
+			       			$"{product.ProductId, -2} " +
+			       			$"{product.Symbol, -4} " +
+			       			$"{product.ProductFullName, -20} " +
+			       			$"{product.ProductType, -20} " +
+			       			$"{product.DecimalPlaces, -2}"
+			      		);
+			};
 
 			//Send request
 			cx.GetProducts();
