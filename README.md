@@ -113,7 +113,7 @@ using CXlib;
 
 namespace ConsoleApp1
 {
- class Program
+ 	class Program
 	{
 		static void Main(string[] args)
 		{
