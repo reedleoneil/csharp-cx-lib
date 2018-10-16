@@ -53,8 +53,8 @@ cx.GetProducts();
 |OnWebAuthenticateUer    |Returns if session is **Authenticated**, **SessionToken**, and **UserId**.                                                                                                   |
 |OnGetUserAccounts       |Returns a list of **AccountIds** for the current user.                                                                                                                          |
 |OnGetAccountTransactions|Retruns a list of recent **Transactions** from your account.                                                                                                                 |
-|OnGetAccountPositions   |Returns a list of **AccountPositions**(Balances) on a specific account.                                                                                                      |
-|OnGetAccountTrades      |Retruns a list of **AccountTrade** history for a specific account.                                                                                                           |
+|OnGetAccountPositions   |Returns a list of account **Positions**(Balances) on a specific account.                                                                                                      |
+|OnGetAccountTrades      |Retruns a list of account **Trades** history for a specific account.                                                                                                           |
 |OnSendOrder             |Retruns **Status**, **ErrorMessage**, and **OrderId***.                                                                                                                      |
 |OnCancelOrder           |Returns **Status**, **ErrorMessage**, **ErrorCode**, and **Detail**.                                                                                                         |
 |OnGetOrderStatus        |Reutrns the **OrderStatus**(current operating status of an order) submitted to Order Management System.                                                                      |
