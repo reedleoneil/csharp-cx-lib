@@ -55,7 +55,7 @@ cx.GetProducts();
 |OnGetAccountTransactions|Retruns a list of recent **Transactions** from your account.                                                                                                                 |
 |OnGetAccountPositions   |Returns a list of account **Positions**(Balances) on a specific account.                                                                                                      |
 |OnGetAccountTrades      |Retruns a list of account **Trades** history for a specific account.                                                                                                           |
-|OnSendOrder             |Retruns **Status**, **ErrorMessage**, and **OrderId***.                                                                                                                      |
+|OnSendOrder             |Retruns **Status**, **ErrorMessage**, and **OrderId**.                                                                                                                      |
 |OnCancelOrder           |Returns **Status**, **ErrorMessage**, **ErrorCode**, and **Detail**.                                                                                                         |
 |OnGetOrderStatus        |Reutrns the **OrderStatus**(current operating status of an order) submitted to Order Management System.                                                                      |
 |OnGetOrderFee           |Returns the estimate of the **OrderFee** and **ProductId** for a specific order and order type.                                                                              |
