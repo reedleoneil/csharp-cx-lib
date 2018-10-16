@@ -51,7 +51,7 @@ cx.GetProducts();
 |OnGetProducts           |Returns a list of available **Products** from the API.                                                                                                                       |
 |OnGetInstruments        |Returns a list of available **Instruments** from the API.                                                                                                                    |
 |OnWebAuthenticateUer    |Returns if session is **Authenticated**, **SessionToken**, and **UserId**.                                                                                                   |
-|OnGetUserAccounts       |Returns a list of account IDs for the current user.                                                                                                                          |
+|OnGetUserAccounts       |Returns a list of **AccountIds** for the current user.                                                                                                                          |
 |OnGetAccountTransactions|Retruns a list of recent **Transactions** from your account.                                                                                                                 |
 |OnGetAccountPositions   |Returns a list of **AccountPositions**(Balances) on a specific account.                                                                                                      |
 |OnGetAccountTrades      |Retruns a list of **AccountTrade** history for a specific account.                                                                                                           |
