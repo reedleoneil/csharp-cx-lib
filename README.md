@@ -50,7 +50,7 @@ cx.GetProducts();
 |------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |OnGetProducts           |Returns a list of available **Products** from the API.                                                                                                                       |
 |OnGetInstruments        |Returns a list of available **Instruments** from the API.                                                                                                                    |
-|OnWebAuthenticateUer    |Returns if session is **Authenticated**, **SessionToken**, and **UserId**.                                                                                                   |
+|OnWebAuthenticateUer    |Returns if session is **Authenticated**, **SessionToken**, **UserId**, and **ErrorMessage**.                                                                                                   |
 |OnGetUserAccounts       |Returns a list of **AccountIds** for the current user.                                                                                                                          |
 |OnGetAccountTransactions|Retruns a list of recent **Transactions** from your account.                                                                                                                 |
 |OnGetAccountPositions   |Returns a list of account **Positions**(Balances) on a specific account.                                                                                                      |
@@ -61,21 +61,21 @@ cx.GetProducts();
 |OnGetOrderFee           |Returns the estimate of the **OrderFee** and **ProductId** for a specific order and order type.                                                                              |
 |OnGetOrderHistory       |Returns the list of of the last 100 **Orders** placed on your account.                                                                                                       |
 |OnGetOpenOrders         |Returns the list of Open **Orders** for specified account of current user.                                                                                                   |
-|OnCreateWithdrawTicket  |Returns **Status**, **ErrorMessage**, and **ErrorCode**.                                                                                                                     |
+|OnCreateWithdrawTicket  |Returns **Result**, **ErrorMessage**, and **ErrorCode**.                                                                                                                     |
 |OnSubscribeLevel1       |Returns **MarketDataLevel1**.                                                                                                                                                |
 |OnLevel1UpdateEvent     |Returns **MarketDataLevel1**.                                                                                                                                                |
-|OnUnsubscribeLevel1     |Returns **Status**, **ErrorMessage**, **ErrorCode**, and **Detail**.                                                                                                         |
+|OnUnsubscribeLevel1     |Returns **Result**, **ErrorMessage**, **ErrorCode**, and **Detail**.                                                                                                         |
 |OnSubscribeLevel2       |Returns list of **MarketDataLevel2**.                                                                                                                                        |
 |OnLevel2UpdateEvent     |Returns list of **MarketDataLevel2**.                                                                                                                                        |
-|OnUnsubscribeLevel2     |Returns **Status**, **ErrorMessage**, **ErrorCode**, and **Detail**.                                                                                                         |
+|OnUnsubscribeLevel2     |Returns **Result**, **ErrorMessage**, **ErrorCode**, and **Detail**.                                                                                                         |
 |OnSubscribeTrades       |Returns list of the latest public **MarketTrades** for the specific instrument.                                                                                              |
 |OnTradeDataUpdateEvent  |Returns list of the latest public **MarketTrades** for the specific instrument.                                                                                              |
-|OnUnsubscribeTrades     |Returns **Status**, **ErrorMessage**, **ErrorCode**, and **Detail**.                                                                                                         |
+|OnUnsubscribeTrades     |Returns **Result**, **ErrorMessage**, **ErrorCode**, and **Detail**.                                                                                                         |
 |OnSubscribeAccountEvents|Returns **Result**.                                                                                                                                                          |
 |PendingDepositUpdate    |Returns **AccountId**, **AssetId**, **TotalPendingDepositValue**.                                                                                                            |
-|AccountPositionEvent    |Returns **AccountPosition** any time the balance of your account changes.                                                                                                    |
+|AccountPositionEvent    |Returns **Position** any time the balance of your account changes.                                                                                                    |
 |OrderStateEvent         |Returns **OrderStatus** events any time the status of an order on your account changes.                                                                                      |
-|OrderTradeEvent         |Returns **AccountTrade** any time one of your orders results in a trade.                                                                                                     |
+|OrderTradeEvent         |Returns **Trade** any time one of your orders results in a trade.                                                                                                     |
 |NewOrderRejectEvent     |Returns **AccountId**, **ClientOrderId**, **Status**, and **RejectReason** if your order is rejected.                                                                        |
 |CancelOrderRejectEvent  |Returns **AccountId**, **OrderId**,  **OrderRevision**, **OrderType**, **InstrumentId**, **Status**, and **RejectReason** if your attempt to cancel an order is unsuccessful.|
 |MarketStateUpdate       |Returns **ExchangeId**, **VenueAdapterId**, **VenueInstrumentId**, **Action**, **PreviousStatus**, **NewStatus**, and **ExchangeDateTime**.                                  |
