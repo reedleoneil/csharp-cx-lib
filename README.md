@@ -62,11 +62,11 @@ cx.GetProducts();
 |OnGetOrderHistory       |Returns the list of of the last 100 **Orders** placed on your account.                                                                                                       |
 |OnGetOpenOrders         |Returns the list of Open **Orders** for specified account of current user.                                                                                                   |
 |OnCreateWithdrawTicket  |Returns **Result**, **ErrorMessage**, and **ErrorCode**.                                                                                                                     |
-|OnSubscribeLevel1       |Returns **MarketDataLevel1**.                                                                                                                                                |
-|OnLevel1UpdateEvent     |Returns **MarketDataLevel1**.                                                                                                                                                |
+|OnSubscribeLevel1       |Returns **MarketData**.                                                                                                                                                |
+|OnLevel1UpdateEvent     |Returns **MarketData**.                                                                                                                                                |
 |OnUnsubscribeLevel1     |Returns **Result**, **ErrorMessage**, **ErrorCode**, and **Detail**.                                                                                                         |
-|OnSubscribeLevel2       |Returns list of **MarketDataLevel2**.                                                                                                                                        |
-|OnLevel2UpdateEvent     |Returns list of **MarketDataLevel2**.                                                                                                                                        |
+|OnSubscribeLevel2       |Returns list of **MarketData**.                                                                                                                                        |
+|OnLevel2UpdateEvent     |Returns list of **MarketData**.                                                                                                                                        |
 |OnUnsubscribeLevel2     |Returns **Result**, **ErrorMessage**, **ErrorCode**, and **Detail**.                                                                                                         |
 |OnSubscribeTrades       |Returns list of the latest public **MarketTrades** for the specific instrument.                                                                                              |
 |OnTradeDataUpdateEvent  |Returns list of the latest public **MarketTrades** for the specific instrument.                                                                                              |
