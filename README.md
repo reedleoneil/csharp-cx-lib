@@ -73,9 +73,9 @@ cx.GetProducts();
 |OnUnsubscribeTrades     |Returns **Result**, **ErrorMessage**, **ErrorCode**, and **Detail**.                                                                                                         |
 |OnSubscribeAccountEvents|Returns **Result**.                                                                                                                                                          |
 |PendingDepositUpdate    |Returns **AccountId**, **AssetId**, **TotalPendingDepositValue**.                                                                                                            |
-|AccountPositionEvent    |Returns **Position** any time the balance of your account changes.                                                                                                    |
+|AccountPositionEvent    |Returns account **Position** any time the balance of your account changes.                                                                                                    |
 |OrderStateEvent         |Returns **OrderStatus** events any time the status of an order on your account changes.                                                                                      |
-|OrderTradeEvent         |Returns **Trade** any time one of your orders results in a trade.                                                                                                     |
+|OrderTradeEvent         |Returns account **Trade** any time one of your orders results in a trade.                                                                                                     |
 |NewOrderRejectEvent     |Returns **AccountId**, **ClientOrderId**, **Status**, and **RejectReason** if your order is rejected.                                                                        |
 |CancelOrderRejectEvent  |Returns **AccountId**, **OrderId**,  **OrderRevision**, **OrderType**, **InstrumentId**, **Status**, and **RejectReason** if your attempt to cancel an order is unsuccessful.|
 |MarketStateUpdate       |Returns **ExchangeId**, **VenueAdapterId**, **VenueInstrumentId**, **Action**, **PreviousStatus**, **NewStatus**, and **ExchangeDateTime**.                                  |
