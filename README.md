@@ -96,7 +96,7 @@ cx.GetProducts();
 |GetOrderFee(accountId, instrumentId, productId, amount, orderType, makerTaker, *sequenceNumber*) |Sends a request to get the estimate of the fee for a specific order and order type.                     |
 |GetOrderHistory(accountId, *sequenceNumber*)                                                     |Sends a request to get the list of orders placed on your account.                                       |
 |GetOpenOrders(accountId, *sequenceNumber*)                                                       |Sends a request to get the list of Open Orders for specified account of current user.                   |
-|OnCreateWithdrawTicket(productId, accountId, amount *sequenceNumber*)                            |Sends a request to creates a withdrawal ticket to send funds from Coins Pro to the user’s Coins wallet. |                            |
+|CreateWithdrawTicket(productId, accountId, amount *sequenceNumber*)                            |Sends a request to creates a withdrawal ticket to send funds from Coins Pro to the user’s Coins wallet. |                            |
 |SubscribeLevel1(instrumentId, *sequenceNumber*)                                                  |Sends a request to subscribe to level 1 market data.                                                    |
 |UnsubscribeLevel1(instrumentId, *sequenceNumber*)                                                |Sends a request to unsubscribe to level 1 market data.                                                  |
 |SubscribeLevel2(instrumentId, depth, *sequenceNumber*)                                           |Sends a request to subscribe to level 2 market data.                                                    |
